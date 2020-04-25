@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Cave
   - Paparazzi
+  - Bottom
   layers:
   - Default
   - TransparentFX
