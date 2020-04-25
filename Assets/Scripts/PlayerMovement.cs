@@ -7,6 +7,8 @@ public class PlayerMovement : MonoBehaviour
     public float _moveSpeed = 10f;
     //public float _rotationSpeed = 10f;
 
+    bool isColliding = false;
+
     public Animator animator;
 
     // Update is called once per frame
@@ -57,5 +59,15 @@ public class PlayerMovement : MonoBehaviour
         Vector2 lookatCamera = Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position;
         float rotationZ = Mathf.Atan2(lookatCamera.normalized.y, lookatCamera.normalized.x) * Mathf.Rad2Deg;
         transform.rotation = Quaternion.Euler(0f, 0f, rotationZ - 90);
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        isColliding = true;
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        isColliding = false;
     }
 }
