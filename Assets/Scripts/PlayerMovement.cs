@@ -1,29 +1,31 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Audio;
 
 public class PlayerMovement : MonoBehaviour
 {
     public float _moveSpeed = 10f;
     //public float _rotationSpeed = 10f;
-
     bool isColliding = false;
 
     public Animator animator;
 
+  
     // Update is called once per frame
     void Update()
     {
         //animator.SetFloat("Move", Input.GetAxis("Horizontal"));
         //animator.SetFloat("Move", Input.GetAxis("Vertical"));
         Movement();
-
     }
 
-    private void Movement()
-    {
-        animator.SetBool("isPressed", false);
 
+        private void Movement()
+    {
+        FindObjectOfType<AudioManager>().Play("Walking");
+        animator.SetBool("isPressed", false);
+       
         if (Input.GetKey(KeyCode.A))
         {
             animator.SetBool("isPressed", true);
