@@ -4021,7 +4021,7 @@ GameObject:
   - component: {fileID: 567779343}
   - component: {fileID: 567779342}
   m_Layer: 0
-  m_Name: Music
+  m_Name: BackgroundMu
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4625,7 +4625,7 @@ PrefabInstance:
     - target: {fileID: 6558687173213150747, guid: 07d35bb3f18dd6a41bc1051812ccf8e3,
         type: 3}
       propertyPath: sounds.Array.data[1].volume
-      value: 0.263
+      value: 0.336
       objectReference: {fileID: 0}
     - target: {fileID: 6558687173213150747, guid: 07d35bb3f18dd6a41bc1051812ccf8e3,
         type: 3}
