@@ -26,7 +26,6 @@ public class MovementAI : MonoBehaviour
     {
         if (!_moveRight && other.tag == "Paparazzi")
         {
-            Debug.Log("hm");
             _moveRight = true;
         }
 
