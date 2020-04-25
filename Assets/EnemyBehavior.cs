@@ -13,7 +13,7 @@ public class EnemyBehavior : MonoBehaviour
     SpriteRenderer flashSprite;
     AudioSource shutterClick;
     SpriteRenderer camSprite;
-    
+
     private void Awake()
     {
         flashSprite = transform.Find("camera_flash").GetComponent<SpriteRenderer>();
@@ -25,20 +25,21 @@ public class EnemyBehavior : MonoBehaviour
 
     private void OnTriggerStay2D(Collider2D collision)
     {
-        if(collision.tag == "Bottom")
+        if (collision.tag == "Bottom")
         {
-            ContactFilter2D contactFilter2D = new ContactFilter2D();
             Vector2 camToPlayer = collision.transform.position - this.transform.position;
-            List<RaycastHit2D> hits = new List<RaycastHit2D>();
-            Physics2D.Raycast(this.transform.position, camToPlayer, contactFilter2D.NoFilter(), hits, camToPlayer.magnitude);
 
-            if (!lostOnce)
+            int mask = LayerMask.GetMask("Default");
+            RaycastHit2D hit = Physics2D.Raycast(this.transform.position, camToPlayer, camToPlayer.magnitude, mask);
+
+            bool insideViewAngle = Mathf.Cos(Mathf.Deg2Rad * viewAngleInDeg) <= Vector2.Dot(camToPlayer.normalized, this.transform.right);
+            camSprite.sprite = insideViewAngle ? camPrimed : camIdle;
+            
+            Debug.DrawRay(this.transform.position, camToPlayer, insideViewAngle ? Color.red : Color.green);
+
+            if (hit.collider.tag == "Bottom" && insideViewAngle)
             {
-                bool insideViewAngle = Mathf.Cos(Mathf.Deg2Rad * viewAngleInDeg) <= Vector2.Dot(camToPlayer.normalized, this.transform.right);
-                Debug.DrawRay(this.transform.position, camToPlayer, insideViewAngle ? Color.red : Color.green);
-                camSprite.sprite = insideViewAngle ? camPrimed : camIdle;
-                
-                if (hits[1].collider.tag == "Bottom" && insideViewAngle)
+                if (!lostOnce)
                 {
                     lostOnce = true;
                     StartCoroutine(CameraFlash());
@@ -50,7 +51,7 @@ public class EnemyBehavior : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if(collision.tag == "Bottom")
+        if (collision.tag == "Bottom")
         {
             camSprite.sprite = camIdle;
         }
