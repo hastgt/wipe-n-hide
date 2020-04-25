@@ -8,11 +8,11 @@ public class ColorChange : MonoBehaviour
     public float cycleSpeed = 0.5f;
     public float offset = 0f;
 
-    Image img;
+    Graphic img;
 
     private void Awake()
     {
-        img = GetComponent<Image>();
+        img = GetComponent<Graphic>();
     }
 
     void Update()

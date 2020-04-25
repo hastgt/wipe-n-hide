@@ -14,13 +14,15 @@ public class EnemyBehavior : MonoBehaviour
     AudioSource shutterClick;
     SpriteRenderer camSprite;
 
+    LevelManager lm;
+
     private void Awake()
     {
         flashSprite = transform.Find("camera_flash").GetComponent<SpriteRenderer>();
         flashSprite.enabled = false;
         camSprite = GetComponent<SpriteRenderer>();
         shutterClick = GetComponent<AudioSource>();
-        // get reference to gamemanager
+        lm = FindObjectOfType<LevelManager>();
     }
 
     private void OnTriggerStay2D(Collider2D collision)
@@ -35,7 +37,7 @@ public class EnemyBehavior : MonoBehaviour
             bool insideViewAngle = Mathf.Cos(Mathf.Deg2Rad * viewAngleInDeg) <= Vector2.Dot(camToPlayer.normalized, this.transform.right);
             camSprite.sprite = insideViewAngle ? camPrimed : camIdle;
             
-            Debug.DrawRay(this.transform.position, camToPlayer, insideViewAngle ? Color.red : Color.green);
+            Debug.DrawRay(transform.position, camToPlayer, insideViewAngle ? Color.red : Color.green);
 
             if (hit.collider.tag == "Bottom" && insideViewAngle)
             {
@@ -43,7 +45,7 @@ public class EnemyBehavior : MonoBehaviour
                 {
                     lostOnce = true;
                     StartCoroutine(CameraFlash());
-                    // tell gamemanager that game is lost
+                    lm.LoseGame();
                 }
             }
         }

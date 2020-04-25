@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class AudioManager : MonoBehaviour
 {
-
 	public static AudioManager instance;
 
 	public AudioMixerGroup mixerGroup;
@@ -16,13 +15,17 @@ public class AudioManager : MonoBehaviour
 		if (instance != null)
 		{
 			Destroy(gameObject);
+			return;
 		}
 		else
 		{
 			instance = this;
 			DontDestroyOnLoad(gameObject);
 		}
+	//}
 
+	//private void Start()
+	//{
 		foreach (Sound s in sounds)
 		{
 			s.source = gameObject.AddComponent<AudioSource>();

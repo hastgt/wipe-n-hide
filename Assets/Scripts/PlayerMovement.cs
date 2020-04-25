@@ -11,12 +11,14 @@ public class PlayerMovement : MonoBehaviour
 
     public Animator animator;
     AudioManager audioManager;
+    Rigidbody2D rb;
 
     float walkSoundTimer = 0;
     public float walkSoundTime = 0.3f;
 
-    private void Start()
+    private void Awake()
     {
+        rb = GetComponent<Rigidbody2D>();
         audioManager = FindObjectOfType<AudioManager>();
     }
 
@@ -86,13 +88,21 @@ public class PlayerMovement : MonoBehaviour
         return isMoving;
     }
 
-    //private void OnTriggerEnter2D(Collider2D collision)
-    //{
-    //    isColliding = true;
-    //}
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        //isColliding = true;
+        if (collision.tag == "Chocolate")
+        {
+            rb.AddForce(new Vector2(Random.Range(-2f, 2f), Random.Range(-2f, 2f)), ForceMode2D.Impulse);
+        }
+    }
 
-    //private void OnTriggerExit2D(Collider2D collision)
-    //{
-    //    isColliding = false;
-    //}
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        //isColliding = false;
+        if(collision.tag == "Chocolate")
+        {
+            rb.velocity = Vector2.zero;
+        }
+    }
 }
