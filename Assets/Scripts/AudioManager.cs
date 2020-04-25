@@ -38,11 +38,11 @@ public class AudioManager : MonoBehaviour
 		Sound s = Array.Find(sounds, item => item.name == sound);
 		if (s == null)
 		{
-			Debug.LogWarning("Sound: " + name + " not found!");
+			Debug.LogWarning("Sound: " + s.name + " not found!");
 			return;
 		}
 
-		s.source.volume = s.volume * (1f + UnityEngine.Random.Range(-s.volumeVariance / 2f, s.volumeVariance / 2f));
+		//s.source.volume = s.volume * (1f + UnityEngine.Random.Range(-s.volumeVariance / 2f, s.volumeVariance / 2f));
 
 		s.source.Play();
 	}

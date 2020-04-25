@@ -7,7 +7,7 @@ public class PlayerMovement : MonoBehaviour
 {
     public float _moveSpeed = 10f;
     //public float _rotationSpeed = 10f;
-    bool isColliding = false;
+    //bool isColliding = false;
 
     public Animator animator;
     AudioManager audioManager;
@@ -86,13 +86,13 @@ public class PlayerMovement : MonoBehaviour
         return isMoving;
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        isColliding = true;
-    }
+    //private void OnTriggerEnter2D(Collider2D collision)
+    //{
+    //    isColliding = true;
+    //}
 
-    private void OnTriggerExit2D(Collider2D collision)
-    {
-        isColliding = false;
-    }
+    //private void OnTriggerExit2D(Collider2D collision)
+    //{
+    //    isColliding = false;
+    //}
 }

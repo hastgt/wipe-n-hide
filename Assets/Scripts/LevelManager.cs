@@ -14,7 +14,7 @@ public class LevelManager : MonoBehaviour
     }
     public void LoadGameScene()
     {
-        SceneManager.LoadScene("Level 1");
+        SceneManager.LoadScene("Level 3");
     }
 
     public void Quit()
