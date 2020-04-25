@@ -18,11 +18,15 @@ public class PlayerMovement : MonoBehaviour
 
     private void Movement()
     {
-        float rotate = Input.GetAxis("Horizontal") * _rotationSpeed;
         float moveVertical = Input.GetAxis("Vertical") * _moveSpeed;
-        rotate *= Time.deltaTime;
         moveVertical *= Time.deltaTime;
-        transform.Rotate(0, 0, rotate);
         transform.Translate(0, moveVertical, 0);
+        //float rotate = Input.GetAxis("Horizontal") * _rotationSpeed;
+        //rotate *= Time.deltaTime;
+        //transform.Rotate(0, 0, rotate);
+
+        Vector2 lookatCamera = Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position;
+        float rotationZ = Mathf.Atan2(lookatCamera.normalized.y, lookatCamera.normalized.x) * Mathf.Rad2Deg;
+        transform.rotation = Quaternion.Euler(0f, 0f, rotationZ - 90);
     }
 }
