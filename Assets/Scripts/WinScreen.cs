@@ -33,8 +33,12 @@ public class WinScreen : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        if (collision.tag == "Player")
+        {
         winAnim.SetBool("WON", true);
         WinScr();
+
+        }
     }
 
 }
