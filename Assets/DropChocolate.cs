@@ -35,6 +35,7 @@ public class DropChocolate : MonoBehaviour
         go.transform.localScale = Vector3.zero;
         go.transform.position = this.transform.position + this.transform.forward * -1 * backOffset;
         go.transform.localEulerAngles = new Vector3(0, 0, Random.Range(0, 360));
+        go.layer = 2;
 
         SpriteRenderer rend = go.AddComponent<SpriteRenderer>();
         CircleCollider2D coll = go.AddComponent<CircleCollider2D>();
