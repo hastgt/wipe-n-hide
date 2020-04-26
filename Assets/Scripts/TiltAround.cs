@@ -36,8 +36,6 @@ public class TiltAround : MonoBehaviour
             float tiltAngleDir = isTiltedLeft ? 1 : -1;
             transform.localEulerAngles += new Vector3(0, 0, tiltAngleDir * tiltAngle * Time.deltaTime / tiltDuration);
 
-            print((360-transform.localEulerAngles.z) % 360);
-
             hasReachedLimit = transform.localEulerAngles.z > tiltAngle;
             
             yield return new WaitForEndOfFrame();
