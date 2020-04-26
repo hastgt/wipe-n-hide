@@ -102,7 +102,7 @@ public class PlayerMovement : MonoBehaviour
         //isColliding = false;
         if(collision.tag == "Chocolate")
         {
-            rb.velocity = Vector2.zero;
+            //rb.velocity = Vector2.zero;
         }
     }
 }
