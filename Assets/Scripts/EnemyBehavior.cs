@@ -34,9 +34,9 @@ public class EnemyBehavior : MonoBehaviour
             int mask = LayerMask.GetMask("Default");
             RaycastHit2D hit = Physics2D.Raycast(this.transform.position, camToPlayer, camToPlayer.magnitude, mask);
 
-            bool insideViewAngle = Mathf.Cos(Mathf.Deg2Rad * viewAngleInDeg) <= Vector2.Dot(camToPlayer.normalized, this.transform.right);
+            bool insideViewAngle = Mathf.Cos(Mathf.Deg2Rad * 0.5f * viewAngleInDeg) <= Vector2.Dot(camToPlayer.normalized, this.transform.right);
             camSprite.sprite = insideViewAngle ? camPrimed : camIdle;
-            
+
             Debug.DrawRay(transform.position, camToPlayer, insideViewAngle ? Color.red : Color.green);
 
             if (hit.collider.tag == "Bottom" && insideViewAngle)
@@ -65,5 +65,16 @@ public class EnemyBehavior : MonoBehaviour
         shutterClick.Play();
         yield return new WaitForSeconds(0.3f);
         flashSprite.enabled = false;
+    }
+
+    private void OnDrawGizmos()
+    {
+        CircleCollider2D coll = GetComponent<CircleCollider2D>();
+        Vector3 leftLimitation = Quaternion.AngleAxis(-0.5f * viewAngleInDeg, Vector3.back) * transform.right;
+        Vector3 rightLimitation = Quaternion.AngleAxis(0.5f * viewAngleInDeg, Vector3.back) * transform.right;
+        Gizmos.DrawLine(transform.position, transform.position + leftLimitation * coll.radius);
+        Gizmos.DrawLine(transform.position, transform.position + rightLimitation * coll.radius);
+        Gizmos.DrawLine(transform.position, transform.position + transform.right * coll.radius);
+
     }
 }

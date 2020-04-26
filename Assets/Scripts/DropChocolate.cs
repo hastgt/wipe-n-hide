@@ -20,7 +20,7 @@ public class DropChocolate : MonoBehaviour
         if(timer <= 0)
         {
             ResetTimer();
-            Drop();
+            //Drop();
         }
         if(Input.GetKeyDown(KeyCode.P) || Input.GetKeyDown(KeyCode.F))
         {

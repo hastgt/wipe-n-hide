@@ -20,7 +20,7 @@ public class FoodTrays : MonoBehaviour
             food.transform.position = hands.transform.position;
             Vector2 lookatCamera = Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position;
             float rotationZ = Mathf.Atan2(lookatCamera.normalized.y, lookatCamera.normalized.x) * Mathf.Rad2Deg;
-            food.rotation = Quaternion.Euler(0f, 0f, rotationZ - 90);
+            food.rotation = Quaternion.Euler(0f, 0f, rotationZ - 180);
         }
     }
 
