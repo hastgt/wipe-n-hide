@@ -35,6 +35,10 @@ public class LevelManager : MonoBehaviour
         {
             LoadGameScene();
         }
+        if(Input.GetKey(KeyCode.Q) && IsInMenu())
+        {
+            Quit();
+        }
     }
 
     public void LoseGame()
