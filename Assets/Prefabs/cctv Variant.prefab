@@ -1,5 +1,20 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-7653296546678692061
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 264536516129455954}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2095ac117d38d4b4ea4c5e1060421099, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tiltTime: 2
+  tiltDuration: 1
+  tiltAngle: 30
 --- !u!1001 &5170483792346610085
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -79,3 +94,9 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8d22be1566eabe24990305af56f0236e, type: 3}
+--- !u!1 &264536516129455954 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4930013403905787639, guid: 8d22be1566eabe24990305af56f0236e,
+    type: 3}
+  m_PrefabInstance: {fileID: 5170483792346610085}
+  m_PrefabAsset: {fileID: 0}
