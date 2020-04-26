@@ -72,5 +72,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fadeTime: 1
   winAnim: {fileID: 0}
-  winCan: {fileID: 0}
   blackScreen: {fileID: 0}
