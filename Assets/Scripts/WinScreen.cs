@@ -1,35 +1,39 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEditor.UI;
+using UnityEngine.UI;
 
 public class WinScreen : MonoBehaviour
 {
-    private bool pressWin;
-    public GameObject winCan;
+    public float fadeTime = 1f;
 
-    private void Update()
+    public Animator winAnim;
+    public GameObject winCan;
+    public Image blackScreen;
+
+
+    private void WinScr()
     {
-        if(pressWin = true && Input.GetKey(KeyCode.E))
+        Debug.Log("check");
+        
+        StartCoroutine(BlackScreenTransition());
+    }
+
+    IEnumerator BlackScreenTransition()
+    {
+        float currentAlpha = 0f;
+        while (blackScreen.color.a < 1f)
         {
-            Debug.Log("u won");
-            winCan.SetActive(true);
-        }        
+            currentAlpha += Time.deltaTime / fadeTime;
+            blackScreen.color = new Color(0f, 0f, 0f, currentAlpha);
+            yield return new WaitForEndOfFrame();
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.tag == "Player")
-        {
-            pressWin = true;
-        }
+        winAnim.SetBool("WON", true);
+        WinScr();
     }
 
-    private void OnTriggerExit2D(Collider2D collision)
-    {
-        if (collision.tag == "Player")
-        {
-            pressWin = false;
-        }
-    }
 }
