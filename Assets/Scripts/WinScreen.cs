@@ -8,7 +8,6 @@ public class WinScreen : MonoBehaviour
     public float fadeTime = 1f;
 
     public Animator winAnim;
-    public GameObject winCan;
     public Image blackScreen;
 
 
