@@ -10,8 +10,12 @@ public class WinScreen : MonoBehaviour
 
     public Animator winAnim;
     public Image blackScreen;
+    public Text txt;
 
-
+    private void Awake()
+    {
+        txt.enabled = false;
+    }
     private void WinScr()
     {
         isWon = true;
@@ -29,6 +33,7 @@ public class WinScreen : MonoBehaviour
             blackScreen.color = new Color(0f, 0f, 0f, currentAlpha);
             yield return new WaitForEndOfFrame();
         }
+        txt.enabled = true;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
