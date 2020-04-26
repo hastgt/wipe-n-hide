@@ -72,3 +72,12 @@ MonoBehaviour:
     loop: 0
     mixerGroup: {fileID: 24300002, guid: da289e08a0c5e534a9ae18267af20e2d, type: 2}
     source: {fileID: 0}
+  - name: Toilet
+    clip: {fileID: 8300000, guid: 0a2bc8f68ab9068469d471c0c4e5cbe5, type: 3}
+    volume: 0.14
+    volumeVariance: 0.06
+    pitch: 0
+    pitchVariance: 0.06
+    loop: 0
+    mixerGroup: {fileID: 24300002, guid: da289e08a0c5e534a9ae18267af20e2d, type: 2}
+    source: {fileID: 0}

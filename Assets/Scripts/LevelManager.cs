@@ -16,11 +16,14 @@ public class LevelManager : MonoBehaviour
     public float rotationSpeed = 720f;
     bool isDead = false;
 
+    public WinScreen isWon;
     public Transform rotator;
     public Animator anim;
 
     private void Awake()
     {
+        isWon = FindObjectOfType<WinScreen>();
+
         if (!IsInMenu())
         {
             pMove = FindObjectOfType<PlayerMovement>();
@@ -35,9 +38,9 @@ public class LevelManager : MonoBehaviour
         {
             LoadGameScene();
         }
-        if(Input.GetKey(KeyCode.Q) && IsInMenu())
+        if (IsInGame())
         {
-            Quit();
+           LoadMainMenu();
         }
     }
 
@@ -51,6 +54,14 @@ public class LevelManager : MonoBehaviour
     public void LoadGameScene()
     {
         SceneManager.LoadScene("Level 3");
+    }
+    
+    public void LoadMainMenu()
+    {
+        if (isWon.isWon == true && Input.GetKey(KeyCode.Q))
+        {
+           SceneManager.LoadScene("MainMenu");
+        }
     }
 
     public void Quit()
@@ -79,5 +90,10 @@ public class LevelManager : MonoBehaviour
     bool IsInMenu()
     {
         return (SceneManager.GetActiveScene().name == "MainMenu");
+    }
+
+    bool IsInGame()
+    {
+        return (SceneManager.GetActiveScene().name == "Level 3");
     }
 }

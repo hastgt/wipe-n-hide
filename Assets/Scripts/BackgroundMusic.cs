@@ -5,6 +5,7 @@ using UnityEngine;
 public class BackgroundMusic : MonoBehaviour
 {
 	public static BackgroundMusic instance;
+   
 
     private void Awake()
     {
@@ -18,6 +19,7 @@ public class BackgroundMusic : MonoBehaviour
 			instance = this;
 			DontDestroyOnLoad(gameObject);
 			FindObjectOfType<AudioManager>()?.Play("BackgroundMusic");
-		}
+        }
     }
+
 }

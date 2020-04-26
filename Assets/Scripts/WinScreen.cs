@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class WinScreen : MonoBehaviour
 {
     public float fadeTime = 1f;
+    public bool isWon = false;
 
     public Animator winAnim;
     public Image blackScreen;
@@ -13,9 +14,10 @@ public class WinScreen : MonoBehaviour
 
     private void WinScr()
     {
-        Debug.Log("check");
-        
+        isWon = true;
         StartCoroutine(BlackScreenTransition());
+        AudioSource audio = GetComponent<AudioSource>();
+        audio.Play();
     }
 
     IEnumerator BlackScreenTransition()
@@ -31,8 +33,12 @@ public class WinScreen : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        if (collision.tag == "Player")
+        {
         winAnim.SetBool("WON", true);
         WinScr();
+
+        }
     }
 
 }
